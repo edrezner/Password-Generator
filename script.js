@@ -13,16 +13,42 @@ function writePassword() {
     var pwLength = prompt("Choose the length of your password. Your password must be 8 to 128 characters.");
 
     // mdn web doc page on while loops https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#while_statement
-    while (pwLength < 8 || pwLength > 128) {
-      prompt("Please choose a password length from 8 to 128 characters.");
+    /* Tried using a while loop, but function was not progressing forward after resolving 
+    true return from pwLength < 8 || pwLength > 128. the if conditional seems to have resolved that. */
+    
+    if (pwLength < 8 || pwLength > 128) {
+      pwLength = prompt("Please choose a password length from 8 to 128 characters.");
     }
 
-    alert("Your password must contain at least one of the 4 following criteria:")
-    
+    alert("Your password must contain at least one of the 4 following criteria:");
+
     var pwLower = confirm("Would you like your password to include lowercase letters?");
     var pwUpper = confirm("Would you like your password to include upper case letters?");
-    var pwNumber = confirm("Would you like your password to inlcude numbers?")    
+    var pwNumber = confirm("Would you like your password to inlcude numbers?");    
     var pwSpecial = confirm("Would you like your password to inlcude special characters?");
+
+    var pwCharacters = "";
+
+    // do I need an array that catalogues all individual characters or one long string?
+    if (pwLower) {
+      pwCharacters += "abcdefghijklomnopqrstuvwxyz";
+    }
+
+    if (pwUpper) { 
+      pwCharacters += "ABCDEFGHIJKLMNOPQRSTUVWYXZ";
+    }
+
+    if (pwNumber) {
+      pwCharacters += "0123456789";
+    }
+
+    // I reviewed this lesson at freecodecamp to insert quotes within a string https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/escape-sequences-in-strings
+    if (pwSpecial) {
+      pwCharacters += "!\"#$%&\'()*+,-/:;<=>?@[\\]^_`{|}~";
+    }
+
+    // Looked up how to generate random strings at stackoverflow https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+    
 
 
   }
