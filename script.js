@@ -16,7 +16,7 @@ function writePassword() {
     /* Tried using a while loop, but function was not progressing forward after resolving 
     true return from pwLength < 8 || pwLength > 128. the if conditional seems to have resolved that. */
     
-    if (pwLength < 8 || pwLength > 128) {
+    while (pwLength < 8 || pwLength > 128) {
       pwLength = prompt("Please choose a password length from 8 to 128 characters.");
     }
 
@@ -48,9 +48,14 @@ function writePassword() {
     }
 
     // Looked up how to generate random strings at stackoverflow https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-    
+    // Also looked up a similar method at this site https://www.programiz.com/javascript/examples/generate-random-strings
+    var pwConstructed = "";
 
+    for (var i = 0; i < pwLength; i++) {
+      pwConstructed += pwCharacters.charAt(Math.floor(Math.random() * pwCharacters.length));
+    }
 
+    return pwConstructed;
   }
   
   passwordText.value = password;
