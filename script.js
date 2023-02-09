@@ -11,13 +11,12 @@ function writePassword() {
     alert("The upcoming prompts will set a password length and then the password criteria you wish to use.");
     
     var pwLength = prompt("Choose the length of your password. Your password must be 8 to 128 characters.");
-
-    // mdn web doc page on while loops https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#while_statement
-    /* Tried using a while loop, but function was not progressing forward after resolving 
-    true return from pwLength < 8 || pwLength > 128. the if conditional seems to have resolved that. */
-    
+    if (typeof pwLength !== "number") {
+    pwLength = prompt("Please enter a number.");  
+    }
+    // mdn web doc page on while loops https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#while_statement       
     while (pwLength < 8 || pwLength > 128) {
-      pwLength = prompt("Please choose a password length from 8 to 128 characters.");
+      pwLength = prompt("Choose a password length from 8 to 128 characters. Please make sure to enter a number [not text].");
     }
 
     alert("Your password must contain at least one of the 4 following criteria:");
