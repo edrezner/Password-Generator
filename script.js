@@ -12,12 +12,12 @@ function writePassword() {
     
     var pwLength = prompt("Choose the length of your password. Your password must be 8 to 128 characters.");
     if (typeof pwLength !== "number") {
-    pwLength = prompt("Please enter a number.");  
-    }
+    pwLength = prompt("Please enter a number between 8 and 128 [not text].");  
+    } // Instructor Diego helped me with this if statement.
     // mdn web doc page on while loops https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#while_statement       
     while (pwLength < 8 || pwLength > 128) {
-      pwLength = prompt("Choose a password length from 8 to 128 characters. Please make sure to enter a number [not text].");
-    }
+      pwLength = prompt("Choose a password length from 8 to 128 characters. Please make sure to enter a number.");
+    } // Enrique TA helped me with this. I had it as an if conditional and he showed why it wouldn't work since it doesn't iterate.
 
     alert("Your password must contain at least one of the 4 following criteria:");
 
@@ -46,6 +46,11 @@ function writePassword() {
       pwCharacters += "!\"#$%&\'()*+,-/:;<=>?@[\\]^_`{|}~";
     }
 
+    if (pwCharacters === "") {
+      alert("You must select at least one set of characters.");
+      return generatePassword();
+    }
+
     // Looked up how to generate random strings at stackoverflow https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
     // Also looked up a similar method at this site https://www.programiz.com/javascript/examples/generate-random-strings
     var pwConstructed = "";
@@ -63,3 +68,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+// readme: Random PW Generatom img, Decription, Usage, Credit 
