@@ -30,9 +30,9 @@ Enrique, my TA helped me with my while loop on line 29. I had it as an if condit
 
 5. Looked up how to generate random strings at stackoverflow https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 
-Also looked up a similar method at this site https://www.programiz.com/javascript/examples/generate-random-strings
+    Also looked up a similar method at this site https://www.programiz.com/javascript/examples/generate-random-strings
 
-These two sources helped me to construct the final for loop for the final construction of the password.
+    These two sources helped me to construct the final for loop for the final construction of the password.
 
 
 
