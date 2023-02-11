@@ -7,28 +7,43 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   
   function generatePassword() {
-    // found info for alert, prompt and confirm message boxes here: https://www.tutorialsteacher.com/javascript/display-popup-message-in-javascript#:~:text=alert(message)%3A%20Display%20a,the%20OK%20and%20Cancel%20buttons.
+    
     alert("The upcoming prompts will set a password length and then the password criteria you wish to use.");
     
+    // This grabs the desired number of characters and stores it in a variable.
     var pwLength = prompt("Choose the length of your password. Your password must be 8 to 128 characters.");
+    
+    /* This if conditional will prompt the user to input a non-text number in the prompt box
+    if they accidentally hit something on their keyboard that was not a number or if they typed out 
+    a number like "five". 
+    
+    One problem with this is since it is not a loop, it only iterates one time;
+    I tried using an identical while loop, but then the application just iterates the prompt ad infinitum.
+    I think this is because the prompt function only grabs strings and so the loop would never actually resolve.
+    Unfortunately I wasn't able to figure out how to convert the string to a number. */
     if (typeof pwLength !== "number") {
     pwLength = prompt("Please enter a number between 8 and 128 [not text].");  
-    } // Instructor Diego helped me with this if statement.
-    // mdn web doc page on while loops https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#while_statement       
+    }       
+    
+    // This while loop ensures that only a password length with a numerical value of less than 128 or greater than 8 is selected.
     while (pwLength < 8 || pwLength > 128) {
       pwLength = prompt("Choose a password length from 8 to 128 characters. Please make sure to enter a number.");
-    } // Enrique TA helped me with this. I had it as an if conditional and he showed why it wouldn't work since it doesn't iterate.
+    } 
 
     alert("Your password must contain at least one of the 4 following criteria:");
 
+    //These variables are going to store 'true' or 'false' values from the confirm boxes.
     var pwLower = confirm("Would you like your password to include lowercase letters?");
     var pwUpper = confirm("Would you like your password to include upper case letters?");
     var pwNumber = confirm("Would you like your password to inlcude numbers?");    
     var pwSpecial = confirm("Would you like your password to inlcude special characters?");
 
+    // This empty string is stored as a variable which will eventually hold our final character set.
     var pwCharacters = "";
 
-    // do I need an array that catalogues all individual characters or one long string?
+    /* The following conditional statements check the truth values of their parameters. If true 
+    (from clicking 'OK' on their matching confirm boxes) then the appropriate character set is 
+    concatenated with the pwCharacters variable */
     if (pwLower) {
       pwCharacters += "abcdefghijklomnopqrstuvwxyz";
     }
@@ -41,20 +56,30 @@ function writePassword() {
       pwCharacters += "0123456789";
     }
 
-    // I reviewed this lesson at freecodecamp to insert quotes within a string https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/escape-sequences-in-strings
+    // I used a back slash to be able to include quotes and back slash in this string.
     if (pwSpecial) {
       pwCharacters += "!\"#$%&\'()*+,-/:;<=>?@[\\]^_`{|}~";
     }
 
+    /* This conditional ensures that at least one character set for pw generation was selected
+    and returns to the top of the function if not */
     if (pwCharacters === "") {
       alert("You must select at least one set of characters.");
       return generatePassword();
     }
 
-    // Looked up how to generate random strings at stackoverflow https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-    // Also looked up a similar method at this site https://www.programiz.com/javascript/examples/generate-random-strings
     var pwConstructed = "";
 
+    /* This loop was something I grabbed through some googling; cited in the credits of the README file.
+    After reading about all the individual parts within the body of the loop I've learned a fair amount of new
+    info. Math.random creates a random decimal between 0 and 1, Math.floor rounds down a decimal to the nearest 
+    whole integer, and the charAt function grabs a character in a string at a specified index based on the argument in the function.
+    
+    Putting this all together; a random value between 0 and 1 is multiplied by the length of our character set variable;
+    that decimal number is then rounded down to a whole integer; that integer determines the index from our character set 
+    variable that contains all the user requested possible characters; and finally the character at that index is added to a final
+    variable that will house the fully constructed password, which is done by iterating this process in a loop over the length
+    of our password length variable. */
     for (var i = 0; i < pwLength; i++) {
       pwConstructed += pwCharacters.charAt(Math.floor(Math.random() * pwCharacters.length));
     }
