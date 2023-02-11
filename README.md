@@ -15,7 +15,7 @@ Here is an image of what the page looks like:
 
 When loading the webpage, click the 'Generate Password' button and proceed through a series of input prompt and confirm boxes to select criteria for creation of a password. Once the user input of requested password length and character types desired is received, a password is generated in the text box that matches selected criteria. The criteria are password length, lower case letters, upper case letters, numbers, and special characters. 
 
-One issue I know of within the JavaScript code is from the if statement on line 24. Since it is an if statement, it only executes once. If the user triggers the prompt within and then still does not select a numerical value, the password generator will not work. I am not sure how to convert the string value from the prompt into a number.
+One issue I know of is the inability of the function to take string type inputs from the user when prompted to pick a password length between 8 and 128 (ex. they accidentally hit a letter character on their keyboard or type out a value like "five"). I tried enable this functionality with a while loop and then an if conditional. My Instructor Diego tried to help me solve this, but I was unable to get a solution that worked in all instances of a user given prompt so I opted to remove it for now. 
 
 ## Credits
 
@@ -26,13 +26,13 @@ One issue I know of within the JavaScript code is from the if statement on line 
 3. MDN web doc page on while loops https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration#while_statement 
 Enrique, my TA helped me with my while loop on line 29. I had it as an if conditional and he showed why it wouldn't work since it doesn't iterate.
 
-4. My instructor Diego helped me with the if conditional on line 24.
+4. My TA Enrique helped explain the final for loop on line 71 and the methods therein.
 
 5. Looked up how to generate random strings at stackoverflow https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 
     Also looked up a similar method at this site https://www.programiz.com/javascript/examples/generate-random-strings
 
-    These two sources helped me to construct the final for loop for the final construction of the password.
+    These two sources helped me to write the for loop to construct the final  password.
 
 
 

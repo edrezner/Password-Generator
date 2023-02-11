@@ -11,23 +11,11 @@ function writePassword() {
     alert("The upcoming prompts will set a password length and then the password criteria you wish to use.");
     
     // This grabs the desired number of characters and stores it in a variable.
-    var pwLength = prompt("Choose the length of your password. Your password must be 8 to 128 characters.");
-    
-    /* This if conditional will prompt the user to input a non-text number in the prompt box
-    if they accidentally hit something on their keyboard that was not a number or if they typed out 
-    a number like "five". 
-    
-    One problem with this is since it is not a loop, it only iterates one time;
-    I tried using an identical while loop, but then the application just iterates the prompt ad infinitum.
-    I think this is because the prompt function only grabs strings and so the loop would never actually resolve.
-    Unfortunately I wasn't able to figure out how to convert the string to a number. */
-    if (typeof pwLength !== "number") {
-    pwLength = prompt("Please enter a number between 8 and 128 [not text].");  
-    }       
-    
+    var pwLength = prompt("Choose the length of your password [please use numeric characters]. Your password must be 8 to 128 characters.");
+       
     // This while loop ensures that only a password length with a numerical value of less than 128 or greater than 8 is selected.
     while (pwLength < 8 || pwLength > 128) {
-      pwLength = prompt("Choose a password length from 8 to 128 characters. Please make sure to enter a number.");
+      pwLength = prompt("Choose a password length from 8 to 128 characters using numeric characters.");
     } 
 
     alert("Your password must contain at least one of the 4 following criteria:");
@@ -71,7 +59,7 @@ function writePassword() {
     var pwConstructed = "";
 
     /* This loop was something I grabbed through some googling; cited in the credits of the README file.
-    After reading about all the individual parts within the body of the loop I've learned a fair amount of new
+    After talking with my TA Enrique and reading about all the individual parts within the body of the loop I've learned a fair amount of new
     info. Math.random creates a random decimal between 0 and 1, Math.floor rounds down a decimal to the nearest 
     whole integer, and the charAt function grabs a character in a string at a specified index based on the argument in the function.
     
