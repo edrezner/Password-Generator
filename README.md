@@ -8,6 +8,12 @@ This project was built as an exercise in deepening my understanding of basic Jav
 
 I was able to learn and build on JavaScript skills including those listed above as well as concatenating strings and following a logical structure of top-down code execution. 
 
+GitHub Repo and Website links:
+
+[GitHub Repo](https://github.com/edrezner/Password-Generator)
+
+[Website](https://edrezner.github.io/Password-Generator/)
+
 Here is an image of what the page looks like:
 ![Password Generator Image](./assets/Images/03-javascript-homework-demo.png)
 
